@@ -21,3 +21,11 @@
 /yarn-error.log
 
 .byebug_history
+
+*.[oa]
+*~
+\#*#
+.\#*
+
+config/database.yml
+/public/assets/*
