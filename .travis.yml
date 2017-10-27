@@ -6,9 +6,9 @@ services:
 bundler_args: "--without development --deployment"
 cache: bundler
 before_script:
-- cp config/database.travis.yml config/database.yml
+- cp config/database.yml.travis config/database.yml
 - bundle exec rails db:create
-- bundle exrc rails db:migrate
+- bundle exec rails db:migrate
 script:
 - bundel exec rails test
 deploy:
