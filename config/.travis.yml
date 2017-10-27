@@ -1,0 +1,22 @@
+language: ruby
+rvm:
+- 2.4.2
+services:
+- postgresql
+bundler_args: "--without development --deployment"
+cache: bundler
+before_script:
+- cp config/database.travis.yml config/database.yml
+- bundle exec rails db:create
+- bundle exrc rails db:migrate
+script:
+- bundel exec rails test
+deploy:
+  provider: heroku
+  api_key:
+    secure: MZ5StzjkyHFq8+l6W8xAMZLc7jjq018fy1URKMaIv0zYO7yi8kPUI+2Ct8xWmid1Ox42T3TTK4gpMGjqqHBivxhK4Ef5N5x6fiHMEmEwQVFEEoR+jS3CXTM9WSVXkA6e2u6Alp+5OKUR+roewEVSKe6JvV0k81pO5zAR45lUgIE6XcR0UxLVsPdM8CEms5QQ3jCm0ppPkhvUvfFrg7jqCan+IH8LWx/8EGmnrySoSgWI5w/u1AI5Z0UXZV5NJgrSANoVHASoGwyNoQKpe+KWrsQ3a1fqw+cKR74bp+Qy6bwa1j92QSe9MhR9ekPoG9MJeiuyjbl4OeAyE0bF4myXul/whs1rUcmmEVBfEUST5uB8S3UnCbC2vsFy+JeajlvEz3sGbMv9vQGfEMhlqnXEqEWYX091UgoywPu+Ky8wcLZm4DqwYMZvqyI23SHb8zeSanNzNqXu0cVUf4c/DdQwApoxKnq6uua7ASvQ3uU1mmPMEHgl5Zb5JGg9svFHzM84PZ8sKdO81cUt4zcDIpzsIH7Z/xgnE5mgb20kOvKMVLy6zCp8V+1gEAMiaLQGYl+K4LDCjESn3zUF1AJCZ4isvWMXtg5RSNlvGLizpfIjDNoyqdlm62HZU9SQXAUAJEzW1HHV7IGYfb3t4bBcXa3DEDze8d2HTvwgxf1bVqEvje0=
+  app: thawing-falls-28141
+  on:
+    repo: e125762/webSpi
+    branch: travis
+  run: "bundle exec rails db:migrate"
