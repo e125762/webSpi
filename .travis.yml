@@ -18,7 +18,6 @@ deploy:
   app: thawing-falls-28141
   on:
     repo: e125762/webSpi
-    branch: travis
   run: "bundle exec rails db:migrate"
 notifications:
    email: false
