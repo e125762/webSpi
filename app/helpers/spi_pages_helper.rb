@@ -1,0 +1,2 @@
+module SpiPagesHelper
+end

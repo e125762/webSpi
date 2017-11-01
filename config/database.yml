@@ -1,18 +1,18 @@
 default: &default
   adapter: postgresql
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  pool: 5
   timeout: 5000
-  username: postgresql
-  password: psql
-  encoding: utf8
+#  username: postgresql
+#  password: psql
+  encoding: unicode
 
 development:
   <<: *default
-  database: rails_development
+  database: webspi_development
 
 test:
   <<: *default
-  database: rails_test
+  database: webspi_test
 
 production:
   url: <%= ENV['DATABASE_URL'] %>

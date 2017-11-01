@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  root 'application#hello'
+
+  root 'spi_pages#index'
+  get 'spi_pages/sonneki', as: :sonneki
 end
