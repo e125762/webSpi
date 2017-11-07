@@ -1,6 +1,34 @@
 # -*- coding: utf-8 -*-
 class SonnekiController < ApplicationController
 
+  def q1_t
+    random = Random.new()
+    #仕入れ値
+    @val1 = random.rand(1..10) * 100
+    #定価
+    @val2 = @val1 + random.rand(11..20) * 100
+    #割引率
+    per = Array(1..10).shuffle
+    per.map!{|x| x * 5}
+    @val3 = per[0]
+
+    @ans = @val2*(1-@val3.to_f/100) - @val1
+
+    #選択肢
+    mistake1 = @val2-@val2*(1-@val3.to_f/100)
+    mistake2 = @val2*(1-per[2].to_f/100) - @val1
+    mistake3 = @val2*(1-per[3].to_f/100) - @val1
+    @array = [@ans,mistake1,mistake2,mistake3].uniq
+
+    if @array.count != 4 then
+      mistake1 = @val2*(1-per[1].to_f/100) - @val1
+      @array.push(mistake1)
+    end
+    @array.shuffle!
+    @array.map!{|x| x.to_i}
+    @ans = @ans.to_i
+  end
+
   def q1_k
     array = ["仕入値","定価","利益"]
     array.shuffle!
