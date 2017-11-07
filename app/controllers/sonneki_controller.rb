@@ -35,5 +35,24 @@ class SonnekiController < ApplicationController
     @array.shuffle!
   end
 
+  def q3_k
+    random = Random.new()
+    #仕入れ値
+    @val1 = random.rand(1..10) * 500
+    #利益率
+    profit = Array(1..9).shuffle
+    @val2 = profit[0] * 10
+
+    @ans = (@val1 * (profit[0].to_f/10 + 1)).to_i
+
+    #選択肢
+    mistake1 = @val1 * (profit[1].to_f/10 + 1)
+    mistake2 = @val1 * (profit[2].to_f/10 + 1)
+    mistake3 = @val1 * (profit[3].to_f/10 + 1)
+
+    @array = [@ans, mistake1, mistake2, mistake3].shuffle
+    @array.map!{|x| x.to_i}
+    
+  end
 
 end
