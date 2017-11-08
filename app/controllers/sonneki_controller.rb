@@ -29,6 +29,95 @@ class SonnekiController < ApplicationController
     @ans = @ans.to_i
   end
 
+  def q2_t
+    random = Random.new()
+    #原価
+    array1 = Array(5..20).shuffle
+    array1.delete(7)
+    array1.delete(13)
+    array1.map!{|x| x*100}
+    @ans = array1[0]
+    #原価の何%の利益か
+    num_per = random.rand(2..8)
+    @val2 = num_per * 10
+    num_per = (num_per * 0.1 + 1).round(1)
+    #売値
+    price = @ans * num_per
+    #割引率 val1
+    #array2 = Array(1..9).shuffle
+    array2 = Array(10.step(90,5)).shuffle
+    array2.map!{|x| (x * 0.01).round(2)}
+    #定価を求める(余りなし) val3
+    array2.each{|var|
+      if price % var == 0 then
+        @val3 = (price / var).to_i
+        @val1 = (var * 100).to_i
+        break
+      end
+    }
+    #選択肢
+    @array = [@ans,array1[1],array1[2],array1[3]].shuffle
+
+  end
+
+  def q3_t
+    #原価
+    random = Random.new()
+    @val1 = random.rand(1..10) * 100
+    #仕入れ個数
+    @val2 = random.rand(2..6) * 100
+    #利益
+    profit = random.rand(1..5)
+    @val3 = profit * 10
+    #売った個数
+    if rand(2).zero? then
+      @val4 = @val2 / 2 + 50
+    else
+      @val4 = @val2 / 2 - 50
+    end
+    #残り
+    @val5 = @val2 - @val4
+    #定価
+    price = (@val1 * (1 + profit.to_f * 0.1)).to_i
+    #残りの割引率
+    val6_num = random.rand(1..6)
+    @val6 = val6_num * 10
+    #仕入れ値の総額
+    all_cost = @val1 * @val2
+    #定価での売上
+    sell = price * @val4
+    #割引売値
+    discount = price * (1 - val6_num.to_f * 0.1)
+    #総売上
+    all_sell = sell + discount.to_i * @val5
+    #総利益
+    all_profit = all_sell - all_cost
+    #答え
+    if all_profit < 0 then
+      @ans = "#{all_profit.abs}円の損失"
+      mistake2 = "#{all_profit.abs}円の利益"
+      mistake1 = "損益なし"
+      mis_num = all_profit.abs + 1000
+    elsif all_profit > 0 then
+      @ans = "#{all_profit}円の利益"
+      mistake2 = "#{all_profit}円の損失"
+      mistake1 = "損益なし"
+      mis_num = all_profit + 1000
+    else
+      @ans = "損益なし"
+      mistake2 = "10000円の損失"
+      mistake1 = "10000円の利益"
+      mis_num = 2500
+    end
+    #選択肢
+
+    mistake3 = "#{all_sell}円の利益"
+    mistake4 = "#{all_sell}円の損失"
+    mistake5 = "#{mis_num}円の利益"
+    mistake6 = "#{mis_num}円の損失"
+    @array = [@ans,mistake1,mistake2,mistake3,mistake4,mistake5,mistake6].shuffle
+  end
+
   def q1_k
     array = ["仕入値","定価","利益"]
     array.shuffle!
