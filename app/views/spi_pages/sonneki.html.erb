@@ -4,14 +4,17 @@
 
 <h3>対策問題</h3>
 <ul>
-  <li>問題1</li>
-  <li>問題2</li>
+  <li><%= link_to "問題1", :sonneki_q1_t %></li>
+  <li><%= link_to "問題2", :sonneki_q2_t %></li>
+  <li><%= link_to "問題3", :sonneki_q3_t %></li>
+
 </ul>
 
 <h3>確認問題</h3>
 <ul>
-  <li><%= link_to "問題1", sonneki_q1_k_path%></li>
-  <li><%= link_to "問題2", sonneki_q2_k_path%></li>
+  <li><%= link_to "問題1", :sonneki_q1_k %></li>
+  <li><%= link_to "問題2", :sonneki_q2_k %></li>
+  <li><%= link_to "問題3", :sonneki_q3_k %></li>
 </ul>
 
-<%= link_to "戻る", :back %>
+<%= link_to "戻る", :root %>
