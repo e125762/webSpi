@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'velocity/q1_t'
   get 'velocity/q1_k'
   get 'velocity/q2_k'
+  get 'velocity/q3_k'
   get 'sonneki/q1_t'
   get 'sonneki/q2_t'
   get 'sonneki/q3_t'
