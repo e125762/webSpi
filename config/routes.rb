@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  get 'velocity/q1_t'
+  get 'velocity/q2_t'
+  get 'velocity/q1_k'
+  get 'velocity/q2_k'
+  get 'velocity/q3_k'
   get 'sonneki/q1_t'
   get 'sonneki/q2_t'
   get 'sonneki/q3_t'
@@ -9,4 +14,5 @@ Rails.application.routes.draw do
 
   root 'spi_pages#index'
   get 'spi_pages/sonneki', as: :sonneki
+  get 'spi_pages/velocity', as: :velocity
 end

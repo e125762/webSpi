@@ -4,4 +4,7 @@ class SpiPagesController < ApplicationController
 
   def sonneki
   end
+
+  def velocity
+  end
 end
