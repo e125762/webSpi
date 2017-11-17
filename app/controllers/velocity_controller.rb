@@ -34,6 +34,34 @@ class VelocityController < ApplicationController
     @array = [@ans,mistake1,mistake2,mistake3]
   end
 
+  def q2_t
+    random = Random.new()
+    #貨物の速度
+    a = random.rand(1..4)
+    b = a+1
+    val2_s = a * 18
+    #時速
+    @val2 = val2_s * 3.6
+    #特急の速度
+    val1_s = random.rand(b..8) * 18
+    #時速
+    @val1 = val1_s * 3.6
+    #相対速度
+    total_v = val1_s - val2_s
+    #追い越す秒 答え
+    array1 = Array(2..12).shuffle
+    @ans = array1[0]
+    #列車の長さ合計
+    length = @ans * total_v
+    ten = length / 10.0
+    #特急長さ
+    @val3 = (ten * 3).round(2)
+    #貨物長さ
+    @val4 = length - @val3
+    #選択肢
+    @array = [@ans,array1[1],array1[2],array1[3]].shuffle
+  end
+
   def q1_k
   end
 
