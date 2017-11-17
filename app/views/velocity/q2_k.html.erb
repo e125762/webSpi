@@ -11,4 +11,14 @@
 </ol>
 
 <p>答え：<%= @ans%>m/分</p>
+
+<div class="pcut">
+<p>解説</p>
+<blockquote>
+<p>基本公式の確認。距離と時間から速さを求める。速さ=距離/時間</p>
+<p>問題文から毎分何mと問われており、<%= @val1%>km=<%=@val1_m%>、<%=@val2%>時間=<%=@val2_m%>分だから、</p>
+<p><%= @val1_m%>/<%= @val2_m%>=<%= @ans%>m/分</p>
+<p>したがって、正解は、<%= @ans%>m/分である。</p>
+</blockquote>
+</div>
 <%= link_to "速度算Top", :velocity %>
