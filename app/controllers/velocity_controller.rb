@@ -7,11 +7,11 @@ class VelocityController < ApplicationController
     array1.map!{|x| x * 5}
     @val1 = array1[0]
     #Aが進む距離
-    a_distance = random.rand(2..6) * 5
+    @a_distance = random.rand(2..6) * 5
     #Aが進む時間
-    @val2 = a_distance * 60 / @val1
+    @val2 = @a_distance * 60 / @val1
     #残りの距離
-    rest_distance = 40 - a_distance
+    @rest_distance = 40 - @a_distance
     #AB合計速度 ab_v
     #val3はBの時速
     case @val1
@@ -24,13 +24,13 @@ class VelocityController < ApplicationController
     else
       @val3 = 5
     end
-    ab_v = @val1 + @val3
-    hour = rest_distance.to_f / ab_v.to_f
-    @ans = (hour * 60).to_i
+    @ab_v = @val1 + @val3
+    @hour = @rest_distance.to_f / @ab_v.to_f
+    @ans = (@hour * 60).to_i
     #選択肢
-    mistake1 = (rest_distance.to_f / (array1[1] + @val3) * 60).to_i
-    mistake2 = (rest_distance.to_f / (array1[2] + @val3) * 60).to_i
-    mistake3 = (rest_distance.to_f / (array1[3] + @val3) * 60).to_i
+    mistake1 = (@rest_distance.to_f / (array1[1] + @val3) * 60).to_i
+    mistake2 = (@rest_distance.to_f / (array1[2] + @val3) * 60).to_i
+    mistake3 = (@rest_distance.to_f / (array1[3] + @val3) * 60).to_i
     @array = [@ans,mistake1,mistake2,mistake3]
   end
 
