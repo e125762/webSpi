@@ -10,4 +10,13 @@
 </ol>
 
 <p>答え：<%= @ans %>円</p>
+<div class="pcut">
+<p>解説</p>
+<blockquote>
+<p>定価を求める</p>
+<p>仕入れ値*(1+利益率)=定価より、</p>
+<p><%= @val1%>*(1+<%= @val2_f%>)=<%= @ans%></p>
+<p>したがって、正解は<%= @ans%>円である。</p>
+</blockquote>
+</div>
 <%= link_to "損益算Top", :sonneki %>

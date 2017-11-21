@@ -3,10 +3,18 @@
 <p>仕入れ値と定価の関係を表す式はどれか。</p>
 
 <ol>
-  <li><%= @val1 %>=<%= @val2 %>+<%= @val3 %></li>
-  <li><%= @val2 %>=<%= @val3 %>+<%= @val1 %></li>
-  <li><%= @val3 %>=<%= @val1 %>+<%= @val2 %></li>
+  <li><%= @array[0]%></li>
+  <li><%= @array[1]%></li>
+  <li><%= @array[2]%></li>
 </ol>
 
-<p>答え：定価=仕入れ値+利益</p>
+<p>答え：<%= @ans %></p>
+<div class="pcut">
+<p>解説</p>
+<blockquote>
+<p>仕入れ値と定価の関係</p>
+<p>定価は仕入れ値に利益を加算したものであるから</p>
+<p>定価=仕入れ値+利益 である。</p>
+</blockquote>
+</div>
 <%= link_to "損益算Top", :sonneki %>
