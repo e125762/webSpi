@@ -41,7 +41,7 @@ class SonnekiController < ApplicationController
     @val2_f = (num_per * 0.1).round(2)
     @prof_per = (@val2_f + 1).round(2)
     #売値
-    @price = (@ans * @prof_per).to_i
+    @price = (@ans * @prof_per).round(1).to_i
     #割引率 val1
     array2 = Array(1..6).shuffle
     array2.map!{|x| (x * 0.1).round(2)}
