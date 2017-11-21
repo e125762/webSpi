@@ -11,8 +11,8 @@ class SonnekiController < ApplicationController
     per = Array(1..10).shuffle
     per.map!{|x| x * 5}
     @val3 = per[0]
-
-    @ans = @val2*(1-@val3.to_f/100) - @val1
+    @sell = (@val2*(1-@val3.to_f/100)).to_i
+    @ans = @sell - @val1
 
     #選択肢
     mistake1 = @val2-@val2*(1-@val3.to_f/100)
@@ -32,29 +32,39 @@ class SonnekiController < ApplicationController
   def q2_t
     random = Random.new()
     #原価
-    array1 = Array(5..20).shuffle
-    array1.delete(7)
-    array1.delete(13)
-    array1.map!{|x| x*100}
+    array1 = Array(1..12).shuffle
+    array1.map!{|x| x * 100}
     @ans = array1[0]
     #原価の何%の利益か
-    num_per = random.rand(2..8)
+    num_per = random.rand(1..5)
     @val2 = num_per * 10
-    num_per = (num_per * 0.1 + 1).round(1)
+    @val2_f = (num_per * 0.1).round(2)
+    @prof_per = (@val2_f + 1).round(2)
     #売値
-    price = @ans * num_per
+    @price = (@ans * @prof_per).to_i
     #割引率 val1
-    #array2 = Array(1..9).shuffle
-    array2 = Array(10.step(90,5)).shuffle
-    array2.map!{|x| (x * 0.01).round(2)}
+    array2 = Array(1..6).shuffle
+    array2.map!{|x| (x * 0.1).round(2)}
     #定価を求める(余りなし) val3
+    flag = false
     array2.each{|var|
-      if price % var == 0 then
-        @val3 = (price / var).to_i
+      if @price % var == 0 then
+        flag = true
+        @val3 = (@price / var).to_i
         @val1 = (var * 100).to_i
+        @val1_f = var
         break
       end
     }
+    if !flag
+      @var1 = 30
+      @var1_f = 0.3
+      @var2 = 20
+      @var2_f = 0.2
+      @price = 1008
+      @var3 = 1440
+      @ans = 940
+    end
     #選択肢
     @array = [@ans,array1[1],array1[2],array1[3]].shuffle
 
@@ -78,31 +88,31 @@ class SonnekiController < ApplicationController
     #残り
     @val5 = @val2 - @val4
     #定価
-    price = (@val1 * (1 + profit.to_f * 0.1)).to_i
+    @price = (@val1 * (1 + profit.to_f * 0.1)).to_i
     #残りの割引率
     val6_num = random.rand(1..6)
     @val6 = val6_num * 10
     #仕入れ値の総額
-    all_cost = @val1 * @val2
+    @all_cost = @val1 * @val2
     #定価での売上
-    sell = price * @val4
+    sell = @price * @val4
     #割引売値
-    discount = price * (1 - val6_num.to_f * 0.1)
+    @discount = (@price * (1 - (val6_num.to_f * 0.1).round(2))).to_i
     #総売上
-    all_sell = sell + discount.to_i * @val5
+    @all_sell = sell + @discount.to_i * @val5
     #総利益
-    all_profit = all_sell - all_cost
+    @all_profit = @all_sell - @all_cost
     #答え
-    if all_profit < 0 then
-      @ans = "#{all_profit.abs}円の損失"
-      mistake2 = "#{all_profit.abs}円の利益"
+    if @all_profit < 0 then
+      @ans = "#{@all_profit.abs}円の損失"
+      mistake2 = "#{@all_profit.abs}円の利益"
       mistake1 = "損益なし"
-      mis_num = all_profit.abs + 1000
-    elsif all_profit > 0 then
-      @ans = "#{all_profit}円の利益"
-      mistake2 = "#{all_profit}円の損失"
+      mis_num = @all_profit.abs + 1000
+    elsif @all_profit > 0 then
+      @ans = "#{@all_profit}円の利益"
+      mistake2 = "#{@all_profit}円の損失"
       mistake1 = "損益なし"
-      mis_num = all_profit + 1000
+      mis_num = @all_profit + 1000
     else
       @ans = "損益なし"
       mistake2 = "10000円の損失"
@@ -111,19 +121,18 @@ class SonnekiController < ApplicationController
     end
     #選択肢
 
-    mistake3 = "#{all_sell}円の利益"
-    mistake4 = "#{all_sell}円の損失"
+    mistake3 = "#{@all_sell}円の利益"
+    mistake4 = "#{@all_sell}円の損失"
     mistake5 = "#{mis_num}円の利益"
     mistake6 = "#{mis_num}円の損失"
     @array = [@ans,mistake1,mistake2,mistake3,mistake4,mistake5,mistake6].shuffle
   end
 
   def q1_k
-    array = ["仕入値","定価","利益"]
-    array.shuffle!
-    @val1 = array[0]
-    @val2 = array[1]
-    @val3 = array[2]
+    @ans = "定価=仕入れ値+利益"
+    mistake1 = "仕入れ値=利益+定価"
+    mistake2 = "利益=仕入れ値+定価"
+    @array = [@ans,mistake1,mistake2].shuffle
   end
 
   def q2_k
@@ -131,13 +140,13 @@ class SonnekiController < ApplicationController
     #仕入れ値
     @val1 = random.rand(1..10) * 100
     #一個あたりの利益
-    one_profit = random.rand(2..20) * 50
+    @one_profit = random.rand(2..20) * 50
     #個数
     @val2 = random.rand(1..9) * 10
     #合計利益
-    @val3 = one_profit * @val2
+    @val3 = @one_profit * @val2
     #定価(答え)
-    @ans = @val1 + one_profit
+    @ans = @val1 + @one_profit
 
     #選択肢
     mistake1 = @ans + 300
@@ -159,7 +168,7 @@ class SonnekiController < ApplicationController
     #利益率
     profit = Array(1..9).shuffle
     @val2 = profit[0] * 10
-
+    @val2_f = (profit[0].to_f/10).round(2)
     @ans = (@val1 * (profit[0].to_f/10 + 1)).to_i
 
     #選択肢

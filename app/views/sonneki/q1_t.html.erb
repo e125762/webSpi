@@ -10,4 +10,19 @@
 </ol>
 
 <p>答え：<%= @ans%>円</p>
+
+<div class="pcut">
+<p>解説</p>
+<blockquote>
+<ol>
+<li>売値を求める</li>
+<p>定価の30％引きで売るので売値は、</p>
+<p><%= @val2%>*<%= @val3%>/100=<%= @sell%>円</p>
+<li>利益を求める</li>
+<p>売値-仕入れ値=利益より、</p>
+<p><%= @sell%>-<%= @val1%>=<%= @ans%>円</p>
+<p>したがって、正解は<%= @ans%>円である。</p>
+</ol>
+</blockquote>
+</div>
 <%= link_to "損益算Top", :sonneki %>

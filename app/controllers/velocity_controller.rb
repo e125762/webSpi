@@ -7,11 +7,11 @@ class VelocityController < ApplicationController
     array1.map!{|x| x * 5}
     @val1 = array1[0]
     #Aが進む距離
-    a_distance = random.rand(2..6) * 5
+    @a_distance = random.rand(2..6) * 5
     #Aが進む時間
-    @val2 = a_distance * 60 / @val1
+    @val2 = @a_distance * 60 / @val1
     #残りの距離
-    rest_distance = 40 - a_distance
+    @rest_distance = 40 - @a_distance
     #AB合計速度 ab_v
     #val3はBの時速
     case @val1
@@ -24,13 +24,13 @@ class VelocityController < ApplicationController
     else
       @val3 = 5
     end
-    ab_v = @val1 + @val3
-    hour = rest_distance.to_f / ab_v.to_f
-    @ans = (hour * 60).to_i
+    @ab_v = @val1 + @val3
+    @hour = @rest_distance.to_f / @ab_v.to_f
+    @ans = (@hour * 60).to_i
     #選択肢
-    mistake1 = (rest_distance.to_f / (array1[1] + @val3) * 60).to_i
-    mistake2 = (rest_distance.to_f / (array1[2] + @val3) * 60).to_i
-    mistake3 = (rest_distance.to_f / (array1[3] + @val3) * 60).to_i
+    mistake1 = (@rest_distance.to_f / (array1[1] + @val3) * 60).to_i
+    mistake2 = (@rest_distance.to_f / (array1[2] + @val3) * 60).to_i
+    mistake3 = (@rest_distance.to_f / (array1[3] + @val3) * 60).to_i
     @array = [@ans,mistake1,mistake2,mistake3]
   end
 
@@ -47,17 +47,19 @@ class VelocityController < ApplicationController
     #時速
     @val1 = val1_s * 3.6
     #相対速度
-    total_v = val1_s - val2_s
+    @total_v = val1_s - val2_s
+    #相対時速
+    @total_v_h = (@val1 - @val2).round(2)
     #追い越す秒 答え
     array1 = Array(2..12).shuffle
     @ans = array1[0]
     #列車の長さ合計
-    length = @ans * total_v
-    ten = length / 10.0
+    @length = @ans * @total_v
+    ten = @length / 10.0
     #特急長さ
     @val3 = (ten * 3).round(2)
     #貨物長さ
-    @val4 = length - @val3
+    @val4 = @length - @val3
     #選択肢
     @array = [@ans,array1[1],array1[2],array1[3]].shuffle
   end
@@ -71,16 +73,16 @@ class VelocityController < ApplicationController
     array1 = Array(3..10).shuffle
     array1.map!{|x| x*6}
     @val1 = array1[0]
-    val1_m = @val1 * 1000
+    @val1_m = @val1 * 1000
     #時間
     @val2 = (random.rand(10..20) * 0.1).round(1)
-    val2_m = (@val2 * 60).to_i
+    @val2_m = (@val2 * 60).to_i
     #答え
-    @ans = val1_m / val2_m
+    @ans = @val1_m / @val2_m
     #選択肢
     mistake1 = (@val1 / @val2).round(1).to_i
-    mistake2 = array1[1] * 1000 / val2_m
-    mistake3 = array1[2] * 1000 / val2_m
+    mistake2 = array1[1] * 1000 / @val2_m
+    mistake3 = array1[2] * 1000 / @val2_m
     mistake4 = (12000 / @val2).to_i
 
     @array = [@ans,mistake1,mistake2,mistake3,mistake4].shuffle
@@ -97,9 +99,10 @@ class VelocityController < ApplicationController
     @val2 = random.rand(12..20) * 5 #Aの分速
     @val3 = random.rand(8..15) * 10 #Bの分速
     #AとB合計分速
-    ab = @val2 + @val3
+    @ab = @val2 + @val3
     #距離
-    @val1 = (ab * @ans * 0.001).round(1)
+    @val1 = (@ab * @ans * 0.001).round(1)
+    @val1_m = (@val1 * 1000).to_i
 
     #選択肢
     @array = [@ans, array1[1],array1[2],array1[3]].shuffle
