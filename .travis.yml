@@ -4,8 +4,19 @@ rvm:
 services:
 - postgresql
 bundler_args: "--without development --deployment"
-cache: bundler
+cache: 
+bundler: true
+yarn: true
+directories:
+- $HOME/.yarn-cache
+- node_modules
+before_install:
+- nvm install $(jq -r '.engines.node' package.json)
+- npm config set spin false
+- npm install yarn
+- yarn install
 before_script:
+
 - cp config/database.yml.travis config/database.yml
 - bundle exec rails db:create
 - bundle exec rails db:migrate
