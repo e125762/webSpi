@@ -1,4 +1,5 @@
 <% provide(:title, "q1")%>
+
 <h1>損益算 確認問題1</h1>
 <p>仕入れ値と定価の関係を表す式はどれか。</p>
 
@@ -9,7 +10,8 @@
 </ol>
 
 <p>答え：<%= @ans %></p>
-<div class="pcut">
+
+<div class="pcut" id="explain" v-show="show">
 <p>解説</p>
 <blockquote>
 <p>仕入れ値と定価の関係</p>
@@ -18,3 +20,4 @@
 </blockquote>
 </div>
 <%= link_to "損益算Top", :sonneki %>
+<%= javascript_pack_tag 'explain_vue' %>
