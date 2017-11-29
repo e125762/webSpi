@@ -2,27 +2,27 @@
 
 <h1>損益算 確認問題1</h1>
 <p>仕入れ値と定価の関係を表す式はどれか。</p>
-<div class="pcut" id="explain">
+<div id="explain">
 
-<table border="1">
+<table class="table table-bordered" v-bind:class="{'table-hover': !show}">
 <thead>
 <tr><th>選択肢</th></tr>
 </thead>
 <tbody>
-<tr>
-  <td><span v-on:click="updateAns()"><%= @array[0]%></span></td>
+<tr v-on:click="updateAns()">
+  <td><%= @array[0]%></td>
 </tr>
-<tr>
-  <td><span v-on:click="updateAns()"><%= @array[1]%></span></td>
+<tr v-on:click="updateAns()">
+  <td><%= @array[1]%></td>
 </tr>
-<tr>
-  <td><span v-on:click="updateAns()"><%= @array[2]%></span></td>
+<tr v-on:click="updateAns()">
+  <td><%= @array[2]%></td>
 </tr>
 </tbody>
 </table>
 
-<p v-if="flag" v-show="show">正解!!</p>
-<p v-else v-show="show">不正解</p>
+<p v-if="flag" v-show="show"><br>正解!!</p>
+<p v-else v-show="show"><br>不正解</p>
 
 <div v-show="show">
 <span>答え：</span><span id="answer"><%= @ans %></span>
