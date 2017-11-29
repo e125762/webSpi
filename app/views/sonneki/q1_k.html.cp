@@ -9,8 +9,14 @@
 <tr><th>選択肢</th></tr>
 </thead>
 <tbody>
-<tr v-on:click="updateAns" v-for="(choice, index) in choices">
-  <td>{{ choice }}</td>
+<tr v-on:click="updateAns($event)">
+  <td><%= @array[0]%></td>
+</tr>
+<tr v-on:click="updateAns()">
+  <td><%= @array[1]%></td>
+</tr>
+<tr v-on:click="updateAns()">
+  <td><%= @array[2]%></td>
 </tr>
 </tbody>
 </table>

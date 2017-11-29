@@ -133,6 +133,7 @@ class SonnekiController < ApplicationController
     mistake1 = "仕入れ値=利益+定価"
     mistake2 = "利益=仕入れ値+定価"
     @array = [@ans,mistake1,mistake2].shuffle
+    gon.array_vue = @array
   end
 
   def q2_k
