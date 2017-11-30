@@ -1,17 +1,12 @@
 <% provide(:title, "q3")%>
 <h1>速度算 確認問題3</h1>
 <p><%= @val1 %>km離れた2地点から、Aさんは毎分<%= @val2 %>m、Bさんは毎分<%= @val3 %>mの速さで同時に向かい合って出発した。2人が出会うのは何分後ですか。必要があれば、小数点以下を切り捨てよ。</p>
+<div id="explain">
+  <%= render 'layouts/choices_table'%>
 
-<ol>
-  <li><%= @array[0] %>分後</li>
-  <li><%= @array[1] %>分後</li>
-  <li><%= @array[2] %>分後</li>
-  <li><%= @array[3] %>分後</li>
-</ol>
+<div v-show="show">
+<span>答え：</span><span id="answer"><%= @ans%>分後</span>
 
-<p>答え：<%= @ans%>分後</p>
-
-<div class="pcut">
 <p>解説</p>
 <blockquote>
 <p>距離と速さから時間を求める。 時間=距離/速さ</p>
@@ -20,6 +15,7 @@
 <p>基本公式に入れて計算すると、<%= @val1_m%>/<%=@ab%>=<%=@ans%>分となる。</p>
 <p>したがって、正解は<%= @ans%>分である。</p>
 </blockquote>
+</div>
 </div>
 
 <%= link_to "速度算Top", :velocity %>

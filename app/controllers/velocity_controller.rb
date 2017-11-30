@@ -31,7 +31,9 @@ class VelocityController < ApplicationController
     mistake1 = (@rest_distance.to_f / (array1[1] + @val3) * 60).to_i
     mistake2 = (@rest_distance.to_f / (array1[2] + @val3) * 60).to_i
     mistake3 = (@rest_distance.to_f / (array1[3] + @val3) * 60).to_i
-    @array = [@ans,mistake1,mistake2,mistake3]
+    @array = [@ans,mistake1,mistake2,mistake3].shuffle
+    @array.map!{|x| x.to_s + "分後"}
+    gon.array_vue = @array
   end
 
   def q2_t
@@ -62,9 +64,16 @@ class VelocityController < ApplicationController
     @val4 = @length - @val3
     #選択肢
     @array = [@ans,array1[1],array1[2],array1[3]].shuffle
+    @array.map!{|x| x.to_s + "秒"}
+    gon.array_vue = @array
   end
 
   def q1_k
+    @ans = "速さ＝距離÷時間"
+    mistake1 = "速さ＝時間÷距離"
+    mistake2 = "速さ＝距離×時間"
+    @array = [@ans,mistake1,mistake2].shuffle
+    gon.array_vue = @array
   end
 
   def q2_k
@@ -86,6 +95,8 @@ class VelocityController < ApplicationController
     mistake4 = (12000 / @val2).to_i
 
     @array = [@ans,mistake1,mistake2,mistake3,mistake4].shuffle
+    @array.map!{|x| x.to_s + "m/分"}
+    gon.array_vue = @array
   end
 
   def q3_k
@@ -106,5 +117,7 @@ class VelocityController < ApplicationController
 
     #選択肢
     @array = [@ans, array1[1],array1[2],array1[3]].shuffle
+    @array.map!{|x| x.to_s + "分後"}
+    gon.array_vue = @array
   end
 end

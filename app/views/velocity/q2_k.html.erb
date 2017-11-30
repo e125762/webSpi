@@ -1,18 +1,11 @@
 <% provide(:title, "q2")%>
 <h1>速度算 確認問題2</h1>
 <p><%= @val1 %>kmの道のりを自動車で一定の速さで走ると<%= @val2%>時間かかった。自動車の速さは毎分何mですか。必要があれば、小数点以下を切り捨てよ。</p>
+<div id="explain">
+  <%= render 'layouts/choices_table'%>
 
-<ol>
-  <li><%= @array[0] %>m/分</li>
-  <li><%= @array[1] %>m/分</li>
-  <li><%= @array[2] %>m/分</li>
-  <li><%= @array[3] %>m/分</li>
-  <li><%= @array[4] %>m/分</li>
-</ol>
-
-<p>答え：<%= @ans%>m/分</p>
-
-<div class="pcut">
+<div v-show="show">
+<span>答え：</span><span id="answer"><%= @ans%>m/分</span>
 <p>解説</p>
 <blockquote>
 <p>基本公式の確認。距離と時間から速さを求める。速さ=距離/時間</p>
@@ -20,5 +13,6 @@
 <p><%= @val1_m%>/<%= @val2_m%>=<%= @ans%>m/分</p>
 <p>したがって、正解は、<%= @ans%>m/分である。</p>
 </blockquote>
+</div>
 </div>
 <%= link_to "速度算Top", :velocity %>
