@@ -24,9 +24,10 @@ class SonnekiController < ApplicationController
       mistake1 = @val2*(1-per[1].to_f/100) - @val1
       @array.push(mistake1)
     end
-    @array.shuffle!
     @array.map!{|x| x.to_i}
     @ans = @ans.to_i
+    @array.map!{|x| x.to_s + "円"}
+    gon.array_vue = @array.shuffle
   end
 
   def q2_t
@@ -67,7 +68,8 @@ class SonnekiController < ApplicationController
     end
     #選択肢
     @array = [@ans,array1[1],array1[2],array1[3]].shuffle
-
+    @array.map!{|x| x.to_s + "円"}
+    gon.array_vue = @array
   end
 
   def q3_t
@@ -126,6 +128,7 @@ class SonnekiController < ApplicationController
     mistake5 = "#{mis_num}円の利益"
     mistake6 = "#{mis_num}円の損失"
     @array = [@ans,mistake1,mistake2,mistake3,mistake4,mistake5,mistake6].shuffle
+    gon.array_vue = @array
   end
 
   def q1_k
@@ -159,7 +162,8 @@ class SonnekiController < ApplicationController
       @array.push(@ans + num)
       num += 50
     end
-    @array.shuffle!
+    @array.map!{|x| x.to_s + "円"}
+    gon.array_vue = @array.shuffle!
   end
 
   def q3_k
@@ -179,7 +183,8 @@ class SonnekiController < ApplicationController
 
     @array = [@ans, mistake1, mistake2, mistake3].shuffle
     @array.map!{|x| x.to_i}
-    
+    @array.map!{|x| x.to_s + "円"}
+    gon.array_vue = @array
   end
 
 end

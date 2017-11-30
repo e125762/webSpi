@@ -1,17 +1,11 @@
 <% provide(:title, "q1")%>
 <h1>損益算 対策問題1</h1>
 <p><%= @val1 %>円で仕入れた商品に<%= @val2 %>円の定価をつけたが、商品が売れないので、定価の<%= @val3 %>％引きで販売することにした。利益はいくらになるか。</p>
+<div id ="explain">
+  <%= render 'layouts/choices_table'%>
 
-<ol>
-  <li><%= @array[0]%>円</li>
-  <li><%= @array[1]%>円</li>
-  <li><%= @array[2]%>円</li>
-  <li><%= @array[3]%>円</li>
-</ol>
-
-<p>答え：<%= @ans%>円</p>
-
-<div class="pcut">
+<div v-show="show">
+<span>答え：</span><span id="answer"><%= @ans%>円</span>
 <p>解説</p>
 <blockquote>
 <ol>
@@ -24,5 +18,6 @@
 <p>したがって、正解は<%= @ans%>円である。</p>
 </ol>
 </blockquote>
+</div>
 </div>
 <%= link_to "損益算Top", :sonneki %>
