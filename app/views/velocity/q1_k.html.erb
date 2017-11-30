@@ -1,16 +1,12 @@
 <% provide(:title, "q1")%>
 <h1>速度算 確認問題1</h1>
 <p>速さ、距離、時間の関係を表す式はどれか。</p>
+<div id="explain">
+  <%= render 'layouts/choices_table'%>
 
-<ol>
-  <li>速さ＝距離÷時間</li>
-  <li>速さ＝時間÷距離</li>
-  <li>速さ＝距離×時間</li>
-</ol>
+<div v-show="show">
+<span>答え：</span><span id="answer"><%= @ans%></span>
 
-<p>答え：速さ＝距離÷時間</p>
-
-<div class="pcut">
 <p>解説</p>
 <blockquote>
 <p>基本公式を覚えておきましょう</p>
@@ -18,5 +14,6 @@
 <p>速さ=距離÷時間</p>
 <p>時間=距離÷速さ</p>
 </blockquote>
+</div>
 </div>
 <%= link_to "速度算Top", :velocity %>

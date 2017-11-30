@@ -1,16 +1,11 @@
 <% provide(:title, "q2")%>
 <h1>損益算 確認問題2</h1>
 <p>仕入れ値<%= @val1 %>円の商品を<%= @val2 %>個販売して、<%= @val3 %>円の利益を得た。定価はいくらか。</p>
+<div id="explain">
+  <%= render 'layouts/choices_table'%>
 
-<ol>
-  <li><%= @array[0] %>円</li>
-  <li><%= @array[1] %>円</li>
-  <li><%= @array[2] %>円</li>
-  <li><%= @array[3] %>円</li>
-</ol>
-<p>答え：<%= @ans %>円</p>
-
-<div class="pcut">
+<div v-show="show">
+<span>答え：</span><span id="answer"><%= @ans %>円</span>
 <p>解説</p>
 <blockquote>
 <p>定価を求める</p>
@@ -20,6 +15,7 @@
 <p>になる。</p>
 <p>したがって、正解は<%= @ans%>円である。</p>
 </blockquote>
+</div>
 </div>
 <%= link_to "損益算Top", :sonneki %>
 

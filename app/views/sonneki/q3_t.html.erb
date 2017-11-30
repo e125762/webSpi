@@ -2,20 +2,11 @@
 <h1>損益算 対策問題3</h1>
 <p>あるお店で、原価<%= @val1 %>円の商品を<%= @val2%>個仕入れて、<%= @val3 %>％の利益を見込んで定価をつけた。このうち、<%= @val4 %>個を定価で売った。</p>
 <p>残り<%= @val5 %>個の売値を定価の<%= @val6 %>％引きですべて売ったとき、利益または損失はいくらになるか。</p>
+<div id="explain">
+  <%= render 'layouts/choices_table'%>
 
-<ol>
-  <li><%= @array[0]%></li>
-  <li><%= @array[1]%></li>
-  <li><%= @array[2]%></li>
-  <li><%= @array[3]%></li>
-  <li><%= @array[4]%></li>
-  <li><%= @array[5]%></li>
-  <li><%= @array[6]%></li>
-</ol>
-
-<p>答え：<%= @ans %></p>
-
-<div class="pcut">
+<div v-show="show">
+<span>答え：</span><span id="answer"><%= @ans %></span>
 <p>解説</p>
 <blockquote>
 <ol>
@@ -35,8 +26,8 @@
 <p>よって、利益計算は、</p>
 <p><%= @all_sell%>-<%= @all_cost%>=<%= @all_profit%>円</p>
 <p>となるので、<%= @ans%>となる。</p>
-
 <ol>
 </blockquote>
+</div>
 </div>
 <%= link_to "損益算Top", :sonneki %>

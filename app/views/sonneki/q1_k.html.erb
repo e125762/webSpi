@@ -1,15 +1,13 @@
 <% provide(:title, "q1")%>
+
 <h1>損益算 確認問題1</h1>
 <p>仕入れ値と定価の関係を表す式はどれか。</p>
+<div id="explain">
 
-<ol>
-  <li><%= @array[0]%></li>
-  <li><%= @array[1]%></li>
-  <li><%= @array[2]%></li>
-</ol>
+<%= render 'layouts/choices_table'%>
 
-<p>答え：<%= @ans %></p>
-<div class="pcut">
+<div v-show="show">
+<span>答え：</span><span id="answer"><%= @ans %></span>
 <p>解説</p>
 <blockquote>
 <p>仕入れ値と定価の関係</p>
@@ -17,4 +15,6 @@
 <p>定価=仕入れ値+利益 である。</p>
 </blockquote>
 </div>
+</div>
 <%= link_to "損益算Top", :sonneki %>
+
