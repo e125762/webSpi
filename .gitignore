@@ -33,3 +33,4 @@ config/database.yml
 /public/packs-test
 /node_modules
 /vendor/bundle
+package-lock.json
