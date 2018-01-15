@@ -1,4 +1,13 @@
 <% provide(:title, "Top")%>
+<% if flash[:alert] %>
+<div class="alert alert-danger">
+  <%= flash.now[:alert]%>
+</div>
+<% elsif flash[:notice]%>
+<div class="alert alert-success">
+<%= flash.now[:notice]%>
+</div>
+<% end %>
 <h1>SPI対策サイト</h1>
 <p><%= link_to "損益算", sonneki_path %></p>
 <p><%= link_to "速度算", velocity_path %></p>

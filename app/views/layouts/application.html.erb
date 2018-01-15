@@ -9,7 +9,27 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+	<%= link_to "webspi", root_path, id: "logo"%>
+	<% if logged_in? %>
+	<div class="navbar-right">
+	  <%= link_to session[:nickname]+"さんlogout", logout_path, id: "in_out" %>
+	</div>
+	<% else %>
+	<div class="navbar-right">
+	<%= link_to 'Twitterでログイン', '/auth/twitter', id: "in_out" %>
+	</div>
+	<% end %>
+      </div>
+
+    </header>
+
+   <div class="container">
+     <%= yield %>
+   </div>
     <%= javascript_pack_tag 'explain_vue' %>
+
+    <%= debug(params) if Rails.env.development? %>
   </body>
 </html>

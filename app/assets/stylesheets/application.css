@@ -13,10 +13,6 @@
  *= require_tree .
  *= require_self
  */
-body {
-    margin: 5px;
-    padding: 5px;
-}
 
 .table {
     table-layout: fixed;

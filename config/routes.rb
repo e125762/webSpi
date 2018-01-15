@@ -15,4 +15,7 @@ Rails.application.routes.draw do
   root 'spi_pages#index'
   get 'spi_pages/sonneki', as: :sonneki
   get 'spi_pages/velocity', as: :velocity
+  get '/auth/:provider/callback', to: 'sessions#create'
+  get 'logout', to: 'sessions#destroy'
+  get '/auth/failure' => 'sessions#failure'
 end
