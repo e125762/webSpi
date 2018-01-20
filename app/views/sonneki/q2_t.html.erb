@@ -3,8 +3,7 @@
 <p>あるお店において、定価の<%= @val1 %>％引の売値で販売しても、原価の<%= @val2%>％の利益が出るように定価を設定している商品がある。</p>
 <p>この商品の定価が<%= @val3%>円の場合、原価はいくらか。</p>
 <div id="explain">
-<%= render 'layouts/choices_table'%>
-
+  <%= render 'layouts/choices_table', q_num: 10012 %>
 <div v-show="show">
 <span>答え：</span><span id="answer"><%= @ans %>円</span>
 
@@ -20,6 +19,15 @@
 <p>したがって、正解は<%= @ans%>円である。</p>
 </ol>
 </blockquote>
+<%= link_to "もう一度解く", :sonneki_q2_t %><span>&nbsp;&nbsp;</span>
 </div>
+
+<div v-if="flag" v-show="show">
+<%= link_to "次の問題へ", :sonneki_q3_t %>
+</div>
+<div v-else v-show="show">
+<%= link_to "確認問題へ", :sonneki_q1_k %>
+</div>
+
 </div>
 <%= link_to "損益算Top", :sonneki %>

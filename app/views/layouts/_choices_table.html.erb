@@ -3,7 +3,7 @@
     <tr><th>選択肢</th></tr>
   </thead>
   <tbody>
-    <tr v-on:click="updateAns" v-for="(choice, index) in choices">
+    <tr v-on:click="updateAns(<%= q_num %>,$event)" v-for="(choice, index) in choices">
       <td>{{ choice }}</td>
     </tr>
   </tbody>
