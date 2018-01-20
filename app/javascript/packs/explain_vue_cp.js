@@ -1,6 +1,4 @@
 import Vue from 'vue/dist/vue.esm.js'
-import axios from 'axios'
-axios.defaults.headers.common['X-CSRF-Token'] = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
 
 var vm = new Vue({
   el: '#explain',
@@ -10,12 +8,14 @@ var vm = new Vue({
 
     choices: gon.array_vue,
 
+    loading: false,
+    message: '送信中'
   },
   methods: {
       updateAns: function(q_num,e) {
 	  //選択初回のみ動作
 	  if (!this.show) {
-
+              this.loading = !this.loading;
 	      e.currentTarget.className = "danger"
               var answer = document.getElementById("answer").innerHTML
               if (event.target.innerHTML === answer ) {
@@ -24,11 +24,7 @@ var vm = new Vue({
 		  this.flag = 0;
               }
               this.show = true
-	      //回答ログをPOST
-	      axios.post('/spi_pages',{
-                  question: q_num,
-                  answer: this.flag
-              });
+	      console.log(q_num);
 	  }
       }
   }

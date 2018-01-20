@@ -2,7 +2,7 @@
 <h1>損益算 対策問題1</h1>
 <p><%= @val1 %>円で仕入れた商品に<%= @val2 %>円の定価をつけたが、商品が売れないので、定価の<%= @val3 %>％引きで販売することにした。利益はいくらになるか。</p>
 <div id="explain">
-  <%= render 'layouts/choices_table'%>
+  <%= render 'layouts/choices_table', q_num: 10011 %>
 
 <div v-show="show">
 <span>答え：</span><span id="answer"><%= @ans%>円</span>

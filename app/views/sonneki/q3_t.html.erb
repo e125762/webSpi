@@ -3,8 +3,7 @@
 <p>あるお店で、原価<%= @val1 %>円の商品を<%= @val2%>個仕入れて、<%= @val3 %>％の利益を見込んで定価をつけた。このうち、<%= @val4 %>個を定価で売った。</p>
 <p>残り<%= @val5 %>個の売値を定価の<%= @val6 %>％引きですべて売ったとき、利益または損失はいくらになるか。</p>
 <div id="explain">
-  <%= render 'layouts/choices_table'%>
-
+  <%= render 'layouts/choices_table', q_num: 10013 %>
 <div v-show="show">
 <span>答え：</span><span id="answer"><%= @ans %></span>
 <p>解説</p>

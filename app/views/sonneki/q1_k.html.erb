@@ -3,9 +3,7 @@
 <h1>損益算 確認問題1</h1>
 <p>仕入れ値と定価の関係を表す式はどれか。</p>
 <div id="explain">
-
-<%= render 'layouts/choices_table'%>
-
+  <%= render 'layouts/choices_table', q_num: 20011 %>
 <div v-show="show">
 <span>答え：</span><span id="answer"><%= @ans %></span>
 <p>解説</p>
