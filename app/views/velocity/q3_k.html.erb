@@ -1,6 +1,6 @@
 <% provide(:title, "q3")%>
 <h1>速度算 確認問題3</h1>
-<p><%= @val1 %>km離れた2地点から、Aさんは毎分<%= @val2 %>m、Bさんは毎分<%= @val3 %>mの速さで同時に向かい合って出発した。2人が出会うのは何分後ですか。必要があれば、小数点以下を切り捨てよ。</p>
+<p class="question"><%= @val1 %>km離れた2地点から、Aさんは毎分<%= @val2 %>m、Bさんは毎分<%= @val3 %>mの速さで同時に向かい合って出発した。2人が出会うのは何分後ですか。必要があれば、小数点以下を切り捨てよ。</p>
 <div id="explain">
   <%= render 'layouts/choices_table', q_num: 20023 %>
 <div v-show="show">
