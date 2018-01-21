@@ -189,3 +189,35 @@ p.ans_no {
   color: blue;
   font-weight: bold;
 }
+
+/*答え*/
+span.ans {
+  font-size: 20px;
+  border-bottom: solid 3px #FF4500;
+  color: #FF4500;
+}
+span.show_ans {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* 解説 */
+p.kaisetu{
+font-size: 20px;
+font-weight: bold;
+color: #505050;/*文字色*/
+padding: 0.5em;/*文字周りの余白*/
+display: inline-block;/*おまじない*/
+line-height: 1.3;/*行高*/
+background: #dbebf8;/*背景色*/
+
+
+vertical-align: middle;/*上下中央*/
+border-radius: 25px 10px 10px 25px;/*左側の角を丸く*/
+}
+
+p.kaisetu:before {
+content: '●';
+color: white;
+margin-right: 8px;
+}

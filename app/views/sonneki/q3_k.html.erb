@@ -2,10 +2,8 @@
 <h1>損益算 確認問題3</h1>
 <p class="question"><%= @val1 %>円で仕入れた商品に、原価の<%= @val2%>％の利益を見込んで定価をつけた。定価はいくらか。</p>
 <div id="explain">
-  <%= render 'layouts/choices_table', q_num: 20013 %>
-<div v-show="show">
-<span>答え：</span><span id="answer"><%= @ans %>円</span>
-<p>解説</p>
+  <%= render 'layouts/choices_table', q_num: 20013, ans: @ans.to_s+"円" %>
+
 <blockquote>
 <p>定価を求める</p>
 <p>仕入れ値*(1+利益率)=定価より、</p>

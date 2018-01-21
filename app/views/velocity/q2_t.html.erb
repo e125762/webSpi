@@ -2,11 +2,8 @@
 <h1>速度算 対策問題2</h1>
 <p class="question">特急列車が時速<%= @val1 %>kmで、時速<%= @val2 %>kmの貨物列車を追い越した。長さは特急列車が<%= @val3 %>m、貨物列車が<%= @val4 %>mであったとき、特急列車の先端が貨物列車の末尾に追いついてから、特急列車の末尾が貨物列車の先端を追い越すまでに何秒かかるか。</p>
 <div id="explain">
-  <%= render 'layouts/choices_table', q_num: 10022 %>
-<div v-show="show">
-<span>答え：</span><span id="answer"><%= @ans %>秒</span>
+  <%= render 'layouts/choices_table', q_num: 10022, ans: @ans.to_s+"秒" %>
 
-<p>解説</p>
 <blockquote>
 <p>追い越しにかかる時間</p>
 <p>以下の(1)、(2)の状況を経て、特急列車は貨物列車を追い越す。</p>

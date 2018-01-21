@@ -2,10 +2,8 @@
 <h1>速度算 対策問題1</h1>
 <p class="question">P地点からQ地点までは40kmある。AさんはP地点から時速<%= @val1%>kmでQ地点に向かって出発した。BさんはAさんが出発してから<%= @val2 %>分後にQ地点から時速<%= @val3%>kmでP地点に向かって出発した。AさんとBさんは、何分後に出会うか。必要があれば、最後に小数点以下第一位を四捨五入せよ。</p>
 <div id="explain">
-  <%= render 'layouts/choices_table', q_num: 10021 %>
-<div v-show="show">
-<span>答え：</span><span id="answer"><%= @ans%>分後</span>
-<p>解説</p>
+  <%= render 'layouts/choices_table', q_num: 10021, ans: @ans.to_s+"分後" %>
+
 <blockquote>
 <p>出会う時間を求める</p>
 <p>AさんとBさんがh時間後に出会うとすると、</p>

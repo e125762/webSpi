@@ -2,11 +2,8 @@
 <h1>速度算 確認問題1</h1>
 <p class="question">速さ、距離、時間の関係を表す式はどれか。</p>
 <div id="explain">
-  <%= render 'layouts/choices_table', q_num: 20021 %>
-<div v-show="show">
-<span>答え：</span><span id="answer"><%= @ans%></span>
+  <%= render 'layouts/choices_table', q_num: 20021, ans: @ans %>
 
-<p>解説</p>
 <blockquote>
 <p>基本公式を覚えておきましょう</p>
 <p>距離=速さ×時間</p>

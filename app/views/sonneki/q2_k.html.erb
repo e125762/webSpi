@@ -2,10 +2,8 @@
 <h1>損益算 確認問題2</h1>
 <p class="question">仕入れ値<%= @val1 %>円の商品を<%= @val2 %>個販売して、<%= @val3 %>円の利益を得た。定価はいくらか。</p>
 <div id="explain">
-  <%= render 'layouts/choices_table', q_num: 20012 %>
-<div v-show="show">
-<span>答え：</span><span id="answer"><%= @ans %>円</span>
-<p>解説</p>
+  <%= render 'layouts/choices_table', q_num: 20012, ans: @ans.to_s+"円" %>
+
 <blockquote>
 <p>定価を求める</p>
 <p><%= @val2%>個販売して、<%= @val3%>円の利益を得るには、1個あたりの利益は<%= @val3%>/<%= @val2%>=<%= @one_profit%>円である。</p>
