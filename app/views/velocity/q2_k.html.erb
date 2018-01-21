@@ -1,19 +1,19 @@
 <% provide(:title, "q2")%>
 <h1>速度算 確認問題2</h1>
-<p><%= @val1 %>kmの道のりを自動車で一定の速さで走ると<%= @val2%>時間かかった。自動車の速さは毎分何mですか。必要があれば、小数点以下を切り捨てよ。</p>
+<p class="question"><%= @val1 %>kmの道のりを自動車で一定の速さで走ると<%= @val2%>時間かかった。自動車の速さは毎分何mですか。必要があれば、小数点以下を切り捨てよ。</p>
 <div id="explain">
-  <%= render 'layouts/choices_table', q_num: 20022 %>
-<div v-show="show">
-<span>答え：</span><span id="answer"><%= @ans%>m/分</span>
-<p>解説</p>
+  <%= render 'layouts/choices_table', q_num: 20022, ans: @ans.to_s+"m/分" %>
+
 <blockquote>
 <p>基本公式の確認。距離と時間から速さを求める。速さ=距離/時間</p>
 <p>問題文から毎分何mと問われており、<%= @val1%>km=<%=@val1_m%>、<%=@val2%>時間=<%=@val2_m%>分だから、</p>
 <p><%= @val1_m%>/<%= @val2_m%>=<%= @ans%>m/分</p>
 <p>したがって、正解は、<%= @ans%>m/分である。</p>
 </blockquote>
-<%= link_to "もう一度解く", :velocity_q2_k %><span>&nbsp;&nbsp;</span>
-<%= link_to "次の問題へ", :velocity_q3_k %>
+
+  <%= render 'layouts/again_btn'%>
+<%= link_to "次の問題へ", :velocity_q3_k, class: 'square_btn' %>
 </div>
 </div>
+<br>
 <%= link_to "速度算Top", :velocity %>

@@ -1,12 +1,8 @@
 <% provide(:title, "q1")%>
 <h1>損益算 対策問題1</h1>
-<p><%= @val1 %>円で仕入れた商品に<%= @val2 %>円の定価をつけたが、商品が売れないので、定価の<%= @val3 %>％引きで販売することにした。利益はいくらになるか。</p>
+<p class="question"><%= @val1 %>円で仕入れた商品に<%= @val2 %>円の定価をつけたが、商品が売れないので、定価の<%= @val3 %>％引きで販売することにした。利益はいくらになるか。</p>
 <div id="explain">
-  <%= render 'layouts/choices_table', q_num: 10011 %>
-
-<div v-show="show">
-<span>答え：</span><span id="answer"><%= @ans%>円</span>
-<p>解説</p>
+  <%= render 'layouts/choices_table', q_num: 10011, ans: @ans.to_s+"円" %>
 <blockquote>
 <ol>
 <li>売値を求める</li>
@@ -18,15 +14,18 @@
 <p>したがって、正解は<%= @ans%>円である。</p>
 </ol>
 </blockquote>
-<%= link_to "もう一度解く", :sonneki_q1_t %><span>&nbsp;&nbsp;</span>
 </div>
 
-<div v-if="flag" v-show="show">
-<%= link_to "次の問題へ", :sonneki_q2_t %>
+  <%= render 'layouts/again_btn'%>
+
+<div v-if="flag" v-show="show" class="i_b">
+<%= link_to "次の問題へ", :sonneki_q2_t, class: 'square_btn' %>
 </div>
-<div v-else v-show="show">
-<%= link_to "確認問題へ", :sonneki_q1_k %>
+<div v-else v-show="show" class="i_b">
+<%= link_to "確認問題へ", :sonneki_q1_k, class: 'square_btn' %>
 </div>
 
 </div>
+<br>
 <%= link_to "損益算Top", :sonneki %>
+
