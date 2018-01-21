@@ -14,12 +14,14 @@
 <p>また、特急列車は時速<%= @val1%>kmであるから、特急列車が貨物列車を追い越す速度は<%= @val1 %>-<%=@val2%>=時速<%= @total_v_h%>kmで、秒速にすると(<%= @total_v_h%>/60/60)kmより<%= @total_v%>mである。よって、秒速<%= @total_v%>mで<%= @length%>mを進むときの時間は、<%= @length%>/<%= @total_v%>=<%= @ans%>秒になる。</p>
 <p>したがって、正解は<%= @ans %>秒である。</p>
 </blockquote>
-<%= link_to "もう一度解く", :velocity_q2_t %><span>&nbsp;&nbsp;</span>
 </div>
 
-<div v-if="!flag" v-show="show">
-<%= link_to "確認問題へ", :velocity_q1_k %>
+  <%= render 'layouts/again_btn'%>
+
+<div v-if="!flag" v-show="show"  class="i_b">
+<%= link_to "確認問題へ", :velocity_q1_k, class: 'square_btn' %>
 </div>
 
 </div>
+<br>
 <%= link_to "速度算Top", :velocity %>

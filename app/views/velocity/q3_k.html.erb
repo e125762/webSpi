@@ -10,8 +10,8 @@
 <p>基本公式に入れて計算すると、<%= @val1_m%>/<%=@ab%>=<%=@ans%>分となる。</p>
 <p>したがって、正解は<%= @ans%>分である。</p>
 </blockquote>
-<%= link_to "もう一度解く", :velocity_q3_k %><span>&nbsp;&nbsp;</span>
+  <%= render 'layouts/again_btn'%>
 </div>
 </div>
-
+<br>
 <%= link_to "速度算Top", :velocity %>

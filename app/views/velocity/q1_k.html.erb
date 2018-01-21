@@ -10,8 +10,11 @@
 <p>速さ=距離÷時間</p>
 <p>時間=距離÷速さ</p>
 </blockquote>
-<%= link_to "もう一度解く", :velocity_q1_k %><span>&nbsp;&nbsp;</span>
-<%= link_to "次の問題へ", :velocity_q2_k %>
+
+  <%= render 'layouts/again_btn'%>
+
+<%= link_to "次の問題へ", :velocity_q2_k, class: 'square_btn' %>
 </div>
 </div>
+<br>
 <%= link_to "速度算Top", :velocity %>
