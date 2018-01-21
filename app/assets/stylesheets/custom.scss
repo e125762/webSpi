@@ -238,6 +238,15 @@ margin-right: 8px;
     background: #1ec7bb;
 }
 
+/*ボタンを横に並べる*/
 .i_b {
 display: inline-block;
+}
+
+/*リンクの下線消す*/
+a {
+ text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
 }
