@@ -250,3 +250,8 @@ a {
 a:hover {
   text-decoration: none;
 }
+
+/* 更新時に解説非表示*/
+[v-cloak] {
+  display: none;
+}
