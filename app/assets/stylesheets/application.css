@@ -22,3 +22,7 @@
 .table th {
     text-align: center;
 }
+.status-title {
+    text-align: center;
+    font-weight: bold;
+}
