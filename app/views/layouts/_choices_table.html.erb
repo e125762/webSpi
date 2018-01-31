@@ -16,15 +16,15 @@
 <div class="col-md-4 col-sm-4 col-xs-4 box25">
 <p class="status-title"><%= session[:nickname] + "さんのデータ"%></p>
 <% total = Log.where(user_id: session[:user_id],question: q_num).count %>
-<p>解いた回数：<%= total %> 回</p>
+<p class="lg">解いた回数：<%= total %> 回</p>
 <% correct = Log.where(user_id: session[:user_id],question: q_num,answer: 1).count %>
-<p>正解数：<%= correct %> 問</p>
+<p class="lg">正解数：<%= correct %> 問</p>
 <% if total == 0 %>
 <% cor_per = " - " %>
 <% else %>
 <% cor_per = ((correct.to_f/total).round(2) * 100).to_i  %>
 <% end %>
-<p>正解率：<%= cor_per %> ％</p>
+<p class="lg">正解率：<%= cor_per %> ％</p>
 
 </div>
 <% end %>
