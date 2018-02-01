@@ -243,7 +243,7 @@ margin-right: 8px;
 display: inline-block;
 }
 
-/*リンクの下線消す*/
+/*リンクの下線を消す*/
 a {
  text-decoration: none;
 }
@@ -253,7 +253,7 @@ a:hover {
 
 /* 更新時に解説非表示*/
 [v-cloak] {
-  display: none;
+    display: none;
 }
 
 /* user status*/
