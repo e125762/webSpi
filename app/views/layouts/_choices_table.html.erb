@@ -1,3 +1,6 @@
+<div class="container">
+<div class="row">
+<div class="col-md-8 col-sm-8 col-xs-8">
 <table class="table table-bordered" v-bind:class="{'table-hover': !show}">
   <thead>
     <tr><th>選択肢</th></tr>
@@ -8,7 +11,25 @@
     </tr>
   </tbody>
 </table>
+</div>
+<% if logged_in? %>
+<div class="col-md-4 col-sm-4 col-xs-4 box25">
+<p class="status-title"><%= session[:nickname] + "さんのデータ"%></p>
+<% total = Log.where(user_id: session[:user_id],question: q_num).count %>
+<p class="lg">解いた回数：<%= total %> 回</p>
+<% correct = Log.where(user_id: session[:user_id],question: q_num,answer: 1).count %>
+<p class="lg">正解数：<%= correct %> 問</p>
+<% if total == 0 %>
+<% cor_per = " - " %>
+<% else %>
+<% cor_per = ((correct.to_f/total).round(2) * 100).to_i  %>
+<% end %>
+<p class="lg">正解率：<%= cor_per %> ％</p>
 
+</div>
+<% end %>
+</div>
+</div>
 <p v-if="flag" v-show="show" class="ans_yes" v-cloak>正解!!</p>
 <p v-else v-show="show" class="ans_no" v-cloak>不正解</p>
 <div v-show="show" v-cloak>
